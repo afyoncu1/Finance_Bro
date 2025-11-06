@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { convertCurrency, exchangeRates } from '../../utils/calculations';
 
 const CurrencyConverter: React.FC = () => {
-  const [amount, setAmount] = useState<string>('100');
-  const [fromCurrency, setFromCurrency] = useState<string>('USD');
-  const [toCurrency, setToCurrency] = useState<string>('EUR');
+  const [amount, setAmount] = useState<string>('');
+  const [fromCurrency, setFromCurrency] = useState<string>('');
+  const [toCurrency, setToCurrency] = useState<string>('');
   const [result, setResult] = useState<number>(0);
 
   const currencies = Object.keys(exchangeRates);

@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 const ComparativeAnalysisCalculator: React.FC = () => {
-  const [targetRevenue, setTargetRevenue] = useState<string>('500000000');
-  const [targetEbitda, setTargetEbitda] = useState<string>('100000000');
-  const [targetEarnings, setTargetEarnings] = useState<string>('75000000');
-  const [targetShares, setTargetShares] = useState<string>('50000000');
+  const [targetRevenue, setTargetRevenue] = useState<string>('');
+  const [targetEbitda, setTargetEbitda] = useState<string>('');
+  const [targetEarnings, setTargetEarnings] = useState<string>('');
+  const [targetShares, setTargetShares] = useState<string>('');
   
   // Comparable companies data
-  const [comp1Revenue, setComp1Revenue] = useState<string>('1000000000');
-  const [comp1EV, setComp1EV] = useState<string>('5000000000');
-  const [comp1Ebitda, setComp1Ebitda] = useState<string>('200000000');
-  const [comp1Earnings, setComp1Earnings] = useState<string>('150000000');
-  const [comp1MarketCap, setComp1MarketCap] = useState<string>('4500000000');
+  const [comp1Revenue, setComp1Revenue] = useState<string>('');
+  const [comp1EV, setComp1EV] = useState<string>('');
+  const [comp1Ebitda, setComp1Ebitda] = useState<string>('');
+  const [comp1Earnings, setComp1Earnings] = useState<string>('');
+  const [comp1MarketCap, setComp1MarketCap] = useState<string>('');
   
-  const [comp2Revenue, setComp2Revenue] = useState<string>('800000000');
-  const [comp2EV, setComp2EV] = useState<string>('4000000000');
-  const [comp2Ebitda, setComp2Ebitda] = useState<string>('160000000');
-  const [comp2Earnings, setComp2Earnings] = useState<string>('120000000');
-  const [comp2MarketCap, setComp2MarketCap] = useState<string>('3600000000');
+  const [comp2Revenue, setComp2Revenue] = useState<string>('');
+  const [comp2EV, setComp2EV] = useState<string>('');
+  const [comp2Ebitda, setComp2Ebitda] = useState<string>('');
+  const [comp2Earnings, setComp2Earnings] = useState<string>('');
+  const [comp2MarketCap, setComp2MarketCap] = useState<string>('');
   
-  const [comp3Revenue, setComp3Revenue] = useState<string>('1200000000');
-  const [comp3EV, setComp3EV] = useState<string>('6000000000');
-  const [comp3Ebitda, setComp3Ebitda] = useState<string>('240000000');
-  const [comp3Earnings, setComp3Earnings] = useState<string>('180000000');
-  const [comp3MarketCap, setComp3MarketCap] = useState<string>('5400000000');
+  const [comp3Revenue, setComp3Revenue] = useState<string>('');
+  const [comp3EV, setComp3EV] = useState<string>('');
+  const [comp3Ebitda, setComp3Ebitda] = useState<string>('');
+  const [comp3Earnings, setComp3Earnings] = useState<string>('');
+  const [comp3MarketCap, setComp3MarketCap] = useState<string>('');
   
   const [result, setResult] = useState<any>(null);
 

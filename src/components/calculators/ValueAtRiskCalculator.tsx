@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const ValueAtRiskCalculator: React.FC = () => {
-  const [portfolioValue, setPortfolioValue] = useState<string>('1000000');
-  const [expectedReturn, setExpectedReturn] = useState<string>('8');
-  const [volatility, setVolatility] = useState<string>('15');
-  const [confidenceLevel, setConfidenceLevel] = useState<string>('95');
-  const [timeHorizon, setTimeHorizon] = useState<string>('1');
+  const [portfolioValue, setPortfolioValue] = useState<string>('');
+  const [expectedReturn, setExpectedReturn] = useState<string>('');
+  const [volatility, setVolatility] = useState<string>('');
+  const [confidenceLevel, setConfidenceLevel] = useState<string>('');
+  const [timeHorizon, setTimeHorizon] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   // Z-scores for different confidence levels

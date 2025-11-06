@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const CAPMCalculator: React.FC = () => {
-  const [riskFreeRate, setRiskFreeRate] = useState<string>('2.5');
-  const [marketReturn, setMarketReturn] = useState<string>('10');
-  const [beta, setBeta] = useState<string>('1.2');
+  const [riskFreeRate, setRiskFreeRate] = useState<string>('');
+  const [marketReturn, setMarketReturn] = useState<string>('');
+  const [beta, setBeta] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {

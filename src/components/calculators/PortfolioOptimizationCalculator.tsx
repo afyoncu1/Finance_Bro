@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 const PortfolioOptimizationCalculator: React.FC = () => {
-  const [stocks, setStocks] = useState<string>('60');
-  const [bonds, setBonds] = useState<string>('30');
-  const [reits, setReits] = useState<string>('10');
-  const [portfolioValue, setPortfolioValue] = useState<string>('100000');
+  const [stocks, setStocks] = useState<string>('');
+  const [bonds, setBonds] = useState<string>('');
+  const [reits, setReits] = useState<string>('');
+  const [portfolioValue, setPortfolioValue] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   // Historical average returns and volatilities

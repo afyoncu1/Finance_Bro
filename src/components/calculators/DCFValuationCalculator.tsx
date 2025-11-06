@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 const DCFValuationCalculator: React.FC = () => {
-  const [revenue, setRevenue] = useState<string>('1000000000');
-  const [revenueGrowth, setRevenueGrowth] = useState<string>('8');
-  const [ebitdaMargin, setEbitdaMargin] = useState<string>('25');
-  const [taxRate, setTaxRate] = useState<string>('21');
-  const [capexPercent, setCapexPercent] = useState<string>('3');
-  const [workingCapitalPercent, setWorkingCapitalPercent] = useState<string>('2');
-  const [wacc, setWacc] = useState<string>('10');
-  const [terminalGrowth, setTerminalGrowth] = useState<string>('2.5');
-  const [sharesOutstanding, setSharesOutstanding] = useState<string>('100000000');
-  const [netDebt, setNetDebt] = useState<string>('500000000');
+  const [revenue, setRevenue] = useState<string>('');
+  const [revenueGrowth, setRevenueGrowth] = useState<string>('');
+  const [ebitdaMargin, setEbitdaMargin] = useState<string>('');
+  const [taxRate, setTaxRate] = useState<string>('');
+  const [capexPercent, setCapexPercent] = useState<string>('');
+  const [workingCapitalPercent, setWorkingCapitalPercent] = useState<string>('');
+  const [wacc, setWacc] = useState<string>('');
+  const [terminalGrowth, setTerminalGrowth] = useState<string>('');
+  const [sharesOutstanding, setSharesOutstanding] = useState<string>('');
+  const [netDebt, setNetDebt] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {

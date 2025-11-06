@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const TaxCalculator: React.FC = () => {
-  const [income, setIncome] = useState<string>('75000');
-  const [filingStatus, setFilingStatus] = useState<string>('single');
-  const [deductions, setDeductions] = useState<string>('12950');
+  const [income, setIncome] = useState<string>('');
+  const [filingStatus, setFilingStatus] = useState<string>('');
+  const [deductions, setDeductions] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   // 2023 Tax Brackets

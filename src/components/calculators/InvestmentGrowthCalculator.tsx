@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
 const InvestmentGrowthCalculator: React.FC = () => {
-  const [initialInvestment, setInitialInvestment] = useState<string>('10000');
-  const [monthlyContribution, setMonthlyContribution] = useState<string>('500');
-  const [annualReturn, setAnnualReturn] = useState<string>('8');
-  const [years, setYears] = useState<string>('20');
+  const [initialInvestment, setInitialInvestment] = useState<string>('');
+  const [monthlyContribution, setMonthlyContribution] = useState<string>('');
+  const [annualReturn, setAnnualReturn] = useState<string>('');
+  const [years, setYears] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
-    if (initialInvestment && monthlyContribution && annualReturn && years) {
-      const initial = parseFloat(initialInvestment);
-      const monthly = parseFloat(monthlyContribution);
-      const rate = parseFloat(annualReturn) / 100;
-      const time = parseFloat(years);
-      
+    const init = initialInvestment || '10000';
+    const monthly = monthlyContribution || '500';
+    const rate = annualReturn || '8';
+    const time = years || '20';
+
+    if (init && monthly && rate && time) {
+      const initial = parseFloat(init);
+      const monthlyNum = parseFloat(monthly);
+      const rateNum = parseFloat(rate) / 100;
+      const timeNum = parseFloat(time);
+
       // Future value of initial investment
-      const futureValueInitial = initial * Math.pow(1 + rate, time);
-      
+      const futureValueInitial = initial * Math.pow(1 + rateNum, timeNum);
+
       // Future value of monthly contributions (annuity)
-      const monthlyRate = rate / 12;
-      const totalMonths = time * 12;
-      const futureValueContributions = monthly * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate);
-      
+      const monthlyRate = rateNum / 12;
+      const totalMonths = timeNum * 12;
+      const futureValueContributions = monthlyNum * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate);
+
       const totalValue = futureValueInitial + futureValueContributions;
-      const totalContributions = initial + (monthly * 12 * time);
+      const totalContributions = initial + (monthlyNum * 12 * timeNum);
       const totalGrowth = totalValue - totalContributions;
       
       setResult({
@@ -51,6 +56,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 value={initialInvestment}
                 onChange={(e) => setInitialInvestment(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="10000"
               />
             </div>
 
@@ -63,6 +69,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 value={monthlyContribution}
                 onChange={(e) => setMonthlyContribution(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="500"
               />
             </div>
 
@@ -76,6 +83,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 value={annualReturn}
                 onChange={(e) => setAnnualReturn(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="8"
               />
             </div>
 
@@ -88,6 +96,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 value={years}
                 onChange={(e) => setYears(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="20"
               />
             </div>
           </div>

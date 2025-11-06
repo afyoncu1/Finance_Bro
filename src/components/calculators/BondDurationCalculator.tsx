@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const BondDurationCalculator: React.FC = () => {
-  const [faceValue, setFaceValue] = useState<string>('1000');
-  const [couponRate, setCouponRate] = useState<string>('5');
-  const [yieldToMaturity, setYieldToMaturity] = useState<string>('4');
-  const [yearsToMaturity, setYearsToMaturity] = useState<string>('10');
-  const [paymentsPerYear, setPaymentsPerYear] = useState<string>('2');
+  const [faceValue, setFaceValue] = useState<string>('');
+  const [couponRate, setCouponRate] = useState<string>('');
+  const [yieldToMaturity, setYieldToMaturity] = useState<string>('');
+  const [yearsToMaturity, setYearsToMaturity] = useState<string>('');
+  const [paymentsPerYear, setPaymentsPerYear] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {

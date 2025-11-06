@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
 const LoanPaymentCalculator: React.FC = () => {
-  const [loanAmount, setLoanAmount] = useState<string>('25000');
-  const [interestRate, setInterestRate] = useState<string>('6.5');
-  const [loanTerm, setLoanTerm] = useState<string>('5');
+  const [loanAmount, setLoanAmount] = useState<string>('');
+  const [interestRate, setInterestRate] = useState<string>('');
+  const [loanTerm, setLoanTerm] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
-    if (loanAmount && interestRate && loanTerm) {
-      const principal = parseFloat(loanAmount);
-      const rate = parseFloat(interestRate) / 100 / 12;
-      const months = parseFloat(loanTerm) * 12;
+    const loan = loanAmount || '25000';
+    const rate = interestRate || '6.5';
+    const term = loanTerm || '5';
+
+    if (loan && rate && term) {
+      const principal = parseFloat(loan);
+      const rateNum = parseFloat(rate) / 100 / 12;
+      const months = parseFloat(term) * 12;
       
-      const monthlyPayment = principal * (rate * Math.pow(1 + rate, months)) / (Math.pow(1 + rate, months) - 1);
+      const monthlyPayment = principal * (rateNum * Math.pow(1 + rateNum, months)) / (Math.pow(1 + rateNum, months) - 1);
       const totalPayment = monthlyPayment * months;
       const totalInterest = totalPayment - principal;
       
@@ -41,6 +45,7 @@ const LoanPaymentCalculator: React.FC = () => {
                 value={loanAmount}
                 onChange={(e) => setLoanAmount(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="25000"
               />
             </div>
 
@@ -54,6 +59,7 @@ const LoanPaymentCalculator: React.FC = () => {
                 value={interestRate}
                 onChange={(e) => setInterestRate(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="6.5"
               />
             </div>
 
@@ -66,6 +72,7 @@ const LoanPaymentCalculator: React.FC = () => {
                 value={loanTerm}
                 onChange={(e) => setLoanTerm(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="5"
               />
             </div>
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const PresentValueCalculator: React.FC = () => {
-  const [calculationType, setCalculationType] = useState<string>('pv');
-  const [futureValue, setFutureValue] = useState<string>('10000');
-  const [presentValue, setPresentValue] = useState<string>('8000');
-  const [interestRate, setInterestRate] = useState<string>('5');
-  const [periods, setPeriods] = useState<string>('5');
+  const [calculationType, setCalculationType] = useState<string>('');
+  const [futureValue, setFutureValue] = useState<string>('');
+  const [presentValue, setPresentValue] = useState<string>('');
+  const [interestRate, setInterestRate] = useState<string>('');
+  const [periods, setPeriods] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {

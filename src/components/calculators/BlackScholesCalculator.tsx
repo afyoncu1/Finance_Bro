@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { calculateBlackScholes } from '../../utils/calculations';
 
 const BlackScholesCalculator: React.FC = () => {
-  const [stockPrice, setStockPrice] = useState<string>('100');
-  const [strikePrice, setStrikePrice] = useState<string>('100');
-  const [timeToExpiry, setTimeToExpiry] = useState<string>('0.25');
-  const [riskFreeRate, setRiskFreeRate] = useState<string>('0.05');
-  const [volatility, setVolatility] = useState<string>('0.2');
+  const [stockPrice, setStockPrice] = useState<string>('');
+  const [strikePrice, setStrikePrice] = useState<string>('');
+  const [timeToExpiry, setTimeToExpiry] = useState<string>('');
+  const [riskFreeRate, setRiskFreeRate] = useState<string>('');
+  const [volatility, setVolatility] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {

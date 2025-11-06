@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const RetirementPlanningCalculator: React.FC = () => {
-  const [currentAge, setCurrentAge] = useState<string>('30');
-  const [retirementAge, setRetirementAge] = useState<string>('65');
-  const [currentSavings, setCurrentSavings] = useState<string>('50000');
-  const [monthlyContribution, setMonthlyContribution] = useState<string>('1000');
-  const [expectedReturn, setExpectedReturn] = useState<string>('7');
+  const [currentAge, setCurrentAge] = useState<string>('');
+  const [retirementAge, setRetirementAge] = useState<string>('');
+  const [currentSavings, setCurrentSavings] = useState<string>('');
+  const [monthlyContribution, setMonthlyContribution] = useState<string>('');
+  const [expectedReturn, setExpectedReturn] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
