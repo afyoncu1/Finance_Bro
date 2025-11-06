@@ -2,7 +2,7 @@ import React from 'react';
 import { calculators } from '../data/calculators';
 import { Calculator } from '../types/calculators';
 import * as Icons from 'lucide-react';
-import logo from '../assets/7ac4c4e4-a13a-4f94-8389-e4dddfb3b277.png';
+import Logo from './Logo';
 
 interface LandingProps {
   onSelectCalculator: (calculatorId: string) => void;
@@ -53,14 +53,14 @@ const Landing: React.FC<LandingProps> = ({ onSelectCalculator }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <img src={logo} alt="Finance Bro" className="h-24 mx-auto mb-8" />
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <Logo className="h-52 md:h-64 mx-auto mb-6 md:mb-8" />
+          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-4">
             Professional Financial Calculators
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed">
             From basic interest calculations to advanced option pricing models,
             Finance Bro provides all the tools you need for financial analysis.
           </p>
