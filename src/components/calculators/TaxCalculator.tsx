@@ -92,7 +92,7 @@ const TaxCalculator: React.FC = () => {
                 type="number"
                 value={income}
                 onChange={(e) => setIncome(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -103,7 +103,7 @@ const TaxCalculator: React.FC = () => {
               <select
                 value={filingStatus}
                 onChange={(e) => setFilingStatus(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               >
                 <option value="single">Single</option>
                 <option value="marriedJoint">Married Filing Jointly</option>
@@ -118,7 +118,7 @@ const TaxCalculator: React.FC = () => {
                 type="number"
                 value={deductions}
                 onChange={(e) => setDeductions(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
               <p className="text-sm text-gray-500 mt-1">
                 Standard deduction: Single $12,950, Married $25,900

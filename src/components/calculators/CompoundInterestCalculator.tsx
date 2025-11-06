@@ -2,21 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { calculateCompoundInterest } from '../../utils/calculations';
 
 const CompoundInterestCalculator: React.FC = () => {
-  const [principal, setPrincipal] = useState<string>('10000');
-  const [rate, setRate] = useState<string>('7');
-  const [time, setTime] = useState<string>('10');
+  const [principal, setPrincipal] = useState<string>('');
+  const [rate, setRate] = useState<string>('');
+  const [time, setTime] = useState<string>('');
   const [compound, setCompound] = useState<string>('12');
-  const [monthlyContribution, setMonthlyContribution] = useState<string>('0');
+  const [monthlyContribution, setMonthlyContribution] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
-    if (principal && rate && time && compound) {
+    const p = principal || '10000';
+    const r = rate || '7';
+    const t = time || '10';
+    const m = monthlyContribution || '0';
+
+    if (p && r && t && compound) {
       const calc = calculateCompoundInterest(
-        parseFloat(principal),
-        parseFloat(rate),
-        parseFloat(time),
+        parseFloat(p),
+        parseFloat(r),
+        parseFloat(t),
         parseFloat(compound),
-        parseFloat(monthlyContribution) || 0
+        parseFloat(m)
       );
       setResult(calc);
     }
@@ -38,7 +43,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 type="number"
                 value={principal}
                 onChange={(e) => setPrincipal(e.target.value)}
-                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 placeholder="10000"
               />
             </div>
@@ -52,7 +57,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 step="0.1"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 placeholder="7"
               />
             </div>
@@ -65,7 +70,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 type="number"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 placeholder="10"
               />
             </div>
@@ -95,7 +100,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 type="number"
                 value={monthlyContribution}
                 onChange={(e) => setMonthlyContribution(e.target.value)}
-                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 placeholder="0"
               />
             </div>
@@ -123,7 +128,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 <div className="bg-white rounded-lg p-4 border border-gray-200">
                   <p className="text-xs md:text-sm text-gray-600">Principal Amount</p>
                   <p className="text-base md:text-lg font-medium text-gray-900">
-                    ${parseFloat(principal).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    ${parseFloat(principal || '10000').toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </p>
                 </div>
 

@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
 const TipCalculator: React.FC = () => {
-  const [billAmount, setBillAmount] = useState<string>('50');
-  const [tipPercentage, setTipPercentage] = useState<string>('18');
-  const [numberOfPeople, setNumberOfPeople] = useState<string>('1');
+  const [billAmount, setBillAmount] = useState<string>('');
+  const [tipPercentage, setTipPercentage] = useState<string>('');
+  const [numberOfPeople, setNumberOfPeople] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
-    if (billAmount && tipPercentage && numberOfPeople) {
-      const bill = parseFloat(billAmount);
-      const tip = parseFloat(tipPercentage);
-      const people = parseInt(numberOfPeople);
+    const bill = billAmount || '50';
+    const tip = tipPercentage || '18';
+    const people = numberOfPeople || '1';
+
+    if (bill && tip && people) {
+      const billNum = parseFloat(bill);
+      const tipNum = parseFloat(tip);
+      const peopleNum = parseInt(people);
       
-      const tipAmount = bill * (tip / 100);
-      const totalAmount = bill + tipAmount;
-      const perPerson = totalAmount / people;
-      const tipPerPerson = tipAmount / people;
+      const tipAmount = billNum * (tipNum / 100);
+      const totalAmount = billNum + tipAmount;
+      const perPerson = totalAmount / peopleNum;
+      const tipPerPerson = tipAmount / peopleNum;
       
       setResult({
         tipAmount,
@@ -44,7 +48,8 @@ const TipCalculator: React.FC = () => {
                 step="0.01"
                 value={billAmount}
                 onChange={(e) => setBillAmount(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="50"
               />
             </div>
 
@@ -56,7 +61,8 @@ const TipCalculator: React.FC = () => {
                 type="number"
                 value={tipPercentage}
                 onChange={(e) => setTipPercentage(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="18"
               />
               <div className="flex gap-2 mt-2">
                 {quickTipButtons.map(tip => (
@@ -80,7 +86,8 @@ const TipCalculator: React.FC = () => {
                 min="1"
                 value={numberOfPeople}
                 onChange={(e) => setNumberOfPeople(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="1"
               />
             </div>
           </div>
@@ -103,7 +110,7 @@ const TipCalculator: React.FC = () => {
                   </p>
                 </div>
 
-                {parseInt(numberOfPeople) > 1 && (
+                {parseInt(numberOfPeople || '1') > 1 && (
                   <>
                     <div className="bg-white rounded-lg p-4 border border-gray-200">
                       <p className="text-sm text-gray-600">Per Person</p>

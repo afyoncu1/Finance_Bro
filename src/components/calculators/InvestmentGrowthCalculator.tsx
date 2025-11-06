@@ -50,7 +50,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 type="number"
                 value={initialInvestment}
                 onChange={(e) => setInitialInvestment(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -62,7 +62,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 type="number"
                 value={monthlyContribution}
                 onChange={(e) => setMonthlyContribution(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -75,7 +75,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 step="0.1"
                 value={annualReturn}
                 onChange={(e) => setAnnualReturn(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -87,7 +87,7 @@ const InvestmentGrowthCalculator: React.FC = () => {
                 type="number"
                 value={years}
                 onChange={(e) => setYears(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
           </div>

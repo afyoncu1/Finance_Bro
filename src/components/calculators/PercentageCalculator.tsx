@@ -43,7 +43,7 @@ const PercentageCalculator: React.FC = () => {
                   type="number"
                   value={percentage}
                   onChange={(e) => setPercentage(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
               <div>
@@ -54,7 +54,7 @@ const PercentageCalculator: React.FC = () => {
                   type="number"
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
               <div className="bg-white rounded-lg p-4 border border-gray-200">
@@ -76,7 +76,7 @@ const PercentageCalculator: React.FC = () => {
                   type="number"
                   value={originalValue}
                   onChange={(e) => setOriginalValue(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
               <div>
@@ -87,7 +87,7 @@ const PercentageCalculator: React.FC = () => {
                   type="number"
                   value={newValue}
                   onChange={(e) => setNewValue(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
               <div className="bg-white rounded-lg p-4 border border-gray-200">
@@ -109,7 +109,7 @@ const PercentageCalculator: React.FC = () => {
                   type="number"
                   value={percentage}
                   onChange={(e) => setPercentage(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
               <div>
@@ -120,7 +120,7 @@ const PercentageCalculator: React.FC = () => {
                   type="number"
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
               <div className="bg-white rounded-lg p-4 border border-gray-200">

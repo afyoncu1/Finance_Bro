@@ -59,7 +59,7 @@ const RetirementPlanningCalculator: React.FC = () => {
                 type="number"
                 value={currentAge}
                 onChange={(e) => setCurrentAge(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -71,7 +71,7 @@ const RetirementPlanningCalculator: React.FC = () => {
                 type="number"
                 value={retirementAge}
                 onChange={(e) => setRetirementAge(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -83,7 +83,7 @@ const RetirementPlanningCalculator: React.FC = () => {
                 type="number"
                 value={currentSavings}
                 onChange={(e) => setCurrentSavings(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -95,7 +95,7 @@ const RetirementPlanningCalculator: React.FC = () => {
                 type="number"
                 value={monthlyContribution}
                 onChange={(e) => setMonthlyContribution(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -108,7 +108,7 @@ const RetirementPlanningCalculator: React.FC = () => {
                 step="0.1"
                 value={expectedReturn}
                 onChange={(e) => setExpectedReturn(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
           </div>

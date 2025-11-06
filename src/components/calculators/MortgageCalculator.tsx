@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { calculateMortgage } from '../../utils/calculations';
 
 const MortgageCalculator: React.FC = () => {
-  const [principal, setPrincipal] = useState<string>('300000');
-  const [rate, setRate] = useState<string>('3.5');
-  const [years, setYears] = useState<string>('30');
+  const [principal, setPrincipal] = useState<string>('');
+  const [rate, setRate] = useState<string>('');
+  const [years, setYears] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
-    if (principal && rate && years) {
+    const p = principal || '300000';
+    const r = rate || '3.5';
+    const y = years || '30';
+
+    if (p && r && y) {
       const calc = calculateMortgage(
-        parseFloat(principal),
-        parseFloat(rate),
-        parseFloat(years)
+        parseFloat(p),
+        parseFloat(r),
+        parseFloat(y)
       );
       setResult(calc);
     }
@@ -33,7 +37,8 @@ const MortgageCalculator: React.FC = () => {
                 type="number"
                 value={principal}
                 onChange={(e) => setPrincipal(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="300000"
               />
             </div>
 
@@ -46,7 +51,8 @@ const MortgageCalculator: React.FC = () => {
                 step="0.01"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="3.5"
               />
             </div>
 
@@ -58,7 +64,8 @@ const MortgageCalculator: React.FC = () => {
                 type="number"
                 value={years}
                 onChange={(e) => setYears(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="30"
               />
             </div>
           </div>

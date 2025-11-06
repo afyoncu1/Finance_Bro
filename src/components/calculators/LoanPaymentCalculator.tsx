@@ -40,7 +40,7 @@ const LoanPaymentCalculator: React.FC = () => {
                 type="number"
                 value={loanAmount}
                 onChange={(e) => setLoanAmount(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -53,7 +53,7 @@ const LoanPaymentCalculator: React.FC = () => {
                 step="0.1"
                 value={interestRate}
                 onChange={(e) => setInterestRate(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -65,7 +65,7 @@ const LoanPaymentCalculator: React.FC = () => {
                 type="number"
                 value={loanTerm}
                 onChange={(e) => setLoanTerm(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 

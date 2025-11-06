@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
 const SimpleInterestCalculator: React.FC = () => {
-  const [principal, setPrincipal] = useState<string>('1000');
-  const [rate, setRate] = useState<string>('5');
-  const [time, setTime] = useState<string>('2');
+  const [principal, setPrincipal] = useState<string>('');
+  const [rate, setRate] = useState<string>('');
+  const [time, setTime] = useState<string>('');
   const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
-    if (principal && rate && time) {
-      const p = parseFloat(principal);
-      const r = parseFloat(rate) / 100;
-      const t = parseFloat(time);
-      const interest = p * r * t;
-      const total = p + interest;
-      
+    const p = principal || '1000';
+    const r = rate || '5';
+    const t = time || '2';
+
+    if (p && r && t) {
+      const pNum = parseFloat(p);
+      const rNum = parseFloat(r) / 100;
+      const tNum = parseFloat(t);
+      const interest = pNum * rNum * tNum;
+      const total = pNum + interest;
+
       setResult({ interest, total });
     }
   }, [principal, rate, time]);
@@ -33,7 +37,8 @@ const SimpleInterestCalculator: React.FC = () => {
                 type="number"
                 value={principal}
                 onChange={(e) => setPrincipal(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="1000"
               />
             </div>
 
@@ -46,7 +51,8 @@ const SimpleInterestCalculator: React.FC = () => {
                 step="0.1"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="5"
               />
             </div>
 
@@ -58,7 +64,8 @@ const SimpleInterestCalculator: React.FC = () => {
                 type="number"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
+                placeholder="2"
               />
             </div>
           </div>

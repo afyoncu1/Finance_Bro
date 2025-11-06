@@ -59,7 +59,7 @@ const PresentValueCalculator: React.FC = () => {
               <select
                 value={calculationType}
                 onChange={(e) => setCalculationType(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               >
                 <option value="pv">Calculate Present Value</option>
                 <option value="fv">Calculate Future Value</option>
@@ -75,7 +75,7 @@ const PresentValueCalculator: React.FC = () => {
                   type="number"
                   value={futureValue}
                   onChange={(e) => setFutureValue(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
             ) : (
@@ -87,7 +87,7 @@ const PresentValueCalculator: React.FC = () => {
                   type="number"
                   value={presentValue}
                   onChange={(e) => setPresentValue(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
                 />
               </div>
             )}
@@ -101,7 +101,7 @@ const PresentValueCalculator: React.FC = () => {
                 step="0.1"
                 value={interestRate}
                 onChange={(e) => setInterestRate(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
@@ -113,7 +113,7 @@ const PresentValueCalculator: React.FC = () => {
                 type="number"
                 value={periods}
                 onChange={(e) => setPeriods(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               />
             </div>
 
