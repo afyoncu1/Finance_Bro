@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowLeft, Shirt } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import logo from '../assets/7ac4c4e4-a13a-4f94-8389-e4dddfb3b277.png';
 
 interface HeaderProps {
   currentView: string;
@@ -21,12 +22,9 @@ const Header: React.FC<HeaderProps> = ({ currentView, onBack }) => {
               </button>
             )}
             <div className="flex items-center space-x-2 md:space-x-3">
-              <div className="bg-blue-900 p-1.5 md:p-2 rounded-lg">
-                <Shirt className="h-4 w-4 md:h-6 md:w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-base md:text-xl font-bold text-gray-900">Finance Bro</h1>
-                <p className="text-xs md:text-sm text-gray-500 hidden sm:block">Professional Financial Calculators</p>
+              <img src={logo} alt="Finance Bro" className="h-10 md:h-12 w-auto" />
+              <div className="hidden sm:block">
+                <p className="text-xs md:text-sm text-gray-500">Professional Financial Calculators</p>
               </div>
             </div>
           </div>
