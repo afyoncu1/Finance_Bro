@@ -2,7 +2,7 @@ import React from 'react';
 import { calculators } from '../data/calculators';
 import { Calculator } from '../types/calculators';
 import * as Icons from 'lucide-react';
-import Logo from './Logo';
+import logo from '../assets/7ac4c4e4-a13a-4f94-8389-e4dddfb3b277 copy.png';
 
 interface LandingProps {
   onSelectCalculator: (calculatorId: string) => void;
@@ -56,7 +56,7 @@ const Landing: React.FC<LandingProps> = ({ onSelectCalculator }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Hero Section */}
         <div className="text-center mb-10 md:mb-16">
-          <Logo className="h-52 md:h-64 mx-auto mb-6 md:mb-8" />
+          <img src={logo} alt="Finance Bro" className="h-64 md:h-80 mx-auto mb-6 md:mb-8" />
           <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-4">
             Professional Financial Calculators
           </h1>

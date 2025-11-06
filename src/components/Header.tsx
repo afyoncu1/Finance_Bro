@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
-import Logo from './Logo';
+import logo from '../assets/7ac4c4e4-a13a-4f94-8389-e4dddfb3b277 copy.png';
 
 interface HeaderProps {
   currentView: string;
@@ -21,9 +21,9 @@ const Header: React.FC<HeaderProps> = ({ currentView, onBack }) => {
                 <ArrowLeft className="h-6 w-6" />
               </button>
             )}
-            <div className="flex flex-col space-y-1">
-              <Logo className="h-16 md:h-20 w-auto" />
-              <p className="text-xs md:text-sm text-gray-500 font-semibold">Professional Financial Calculators</p>
+            <div className="flex items-center space-x-3">
+              <img src={logo} alt="Finance Bro" className="h-20 md:h-24 w-auto" />
+              <p className="text-base md:text-lg text-gray-700 font-bold">Professional Financial Calculators</p>
             </div>
           </div>
         </div>
