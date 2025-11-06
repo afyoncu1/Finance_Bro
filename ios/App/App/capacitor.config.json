@@ -1,0 +1,15 @@
+{
+	"appId": "com.financebro.app",
+	"appName": "Finance Bro",
+	"webDir": "dist",
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": true,
+			"androidAutoHideSplashScreen": true
+		}
+	},
+	"ios": {
+		"contentInset": "automatic"
+	},
+	"packageClassList": []
+}
