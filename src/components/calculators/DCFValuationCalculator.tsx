@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Calculator } from 'lucide-react';
 
 const DCFValuationCalculator: React.FC = () => {
   const [revenue, setRevenue] = useState<string>('');
@@ -12,6 +13,80 @@ const DCFValuationCalculator: React.FC = () => {
   const [sharesOutstanding, setSharesOutstanding] = useState<string>('');
   const [netDebt, setNetDebt] = useState<string>('');
   const [result, setResult] = useState<any>(null);
+
+  const [showWaccCalculator, setShowWaccCalculator] = useState(false);
+  const [showTerminalGrowthCalculator, setShowTerminalGrowthCalculator] = useState(false);
+
+  const [waccEquityValue, setWaccEquityValue] = useState<string>('');
+  const [waccDebtValue, setWaccDebtValue] = useState<string>('');
+  const [waccCostOfEquity, setWaccCostOfEquity] = useState<string>('');
+  const [waccCostOfDebt, setWaccCostOfDebt] = useState<string>('');
+  const [waccTaxRate, setWaccTaxRate] = useState<string>('');
+  const [calculatedWacc, setCalculatedWacc] = useState<number | null>(null);
+
+  const [terminalFcf, setTerminalFcf] = useState<string>('');
+  const [terminalWacc, setTerminalWacc] = useState<string>('');
+  const [terminalGrowthRate, setTerminalGrowthRate] = useState<string>('');
+  const [calculatedTerminalValue, setCalculatedTerminalValue] = useState<number | null>(null);
+
+  const calculateWacc = () => {
+    if (waccEquityValue && waccDebtValue && waccCostOfEquity && waccCostOfDebt && waccTaxRate) {
+      const E = parseFloat(waccEquityValue);
+      const D = parseFloat(waccDebtValue);
+      const Re = parseFloat(waccCostOfEquity) / 100;
+      const Rd = parseFloat(waccCostOfDebt) / 100;
+      const Tc = parseFloat(waccTaxRate) / 100;
+      const V = E + D;
+
+      const waccResult = ((E / V) * Re + (D / V) * Rd * (1 - Tc)) * 100;
+      setCalculatedWacc(waccResult);
+    }
+  };
+
+  const useWaccInDcf = () => {
+    if (calculatedWacc !== null) {
+      setWacc(calculatedWacc.toFixed(2));
+      setShowWaccCalculator(false);
+    }
+  };
+
+  const useWaccInTerminalGrowth = () => {
+    if (calculatedWacc !== null) {
+      setTerminalWacc(calculatedWacc.toFixed(2));
+      setShowWaccCalculator(false);
+      setShowTerminalGrowthCalculator(true);
+    }
+  };
+
+  const calculateTerminalValue = () => {
+    if (terminalFcf && terminalWacc && terminalGrowthRate) {
+      const fcf = parseFloat(terminalFcf);
+      const waccRate = parseFloat(terminalWacc) / 100;
+      const growthRate = parseFloat(terminalGrowthRate) / 100;
+
+      const terminalValue = (fcf * (1 + growthRate)) / (waccRate - growthRate);
+      setCalculatedTerminalValue(terminalValue);
+    }
+  };
+
+  const useTerminalGrowthInDcf = () => {
+    if (terminalGrowthRate) {
+      setTerminalGrowth(terminalGrowthRate);
+      setShowTerminalGrowthCalculator(false);
+    }
+  };
+
+  useEffect(() => {
+    if (waccEquityValue && waccDebtValue && waccCostOfEquity && waccCostOfDebt && waccTaxRate) {
+      calculateWacc();
+    }
+  }, [waccEquityValue, waccDebtValue, waccCostOfEquity, waccCostOfDebt, waccTaxRate]);
+
+  useEffect(() => {
+    if (terminalFcf && terminalWacc && terminalGrowthRate) {
+      calculateTerminalValue();
+    }
+  }, [terminalFcf, terminalWacc, terminalGrowthRate]);
 
   useEffect(() => {
     if (revenue && revenueGrowth && ebitdaMargin && taxRate && capexPercent && workingCapitalPercent && wacc && terminalGrowth && sharesOutstanding && netDebt) {
@@ -166,26 +241,46 @@ const DCFValuationCalculator: React.FC = () => {
               <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">
                 WACC - Discount Rate (%)
               </label>
-              <input
-                type="number"
-                step="0.1"
-                value={wacc}
-                onChange={(e) => setWacc(e.target.value)}
-                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+              <div className="flex gap-2">
+                <input
+                  type="number"
+                  step="0.1"
+                  value={wacc}
+                  onChange={(e) => setWacc(e.target.value)}
+                  className="flex-1 px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="e.g., 8.5"
+                />
+                <button
+                  onClick={() => setShowWaccCalculator(true)}
+                  className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1 text-sm"
+                  title="Calculate WACC"
+                >
+                  <Calculator size={16} />
+                </button>
+              </div>
             </div>
 
             <div>
               <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">
                 Terminal Growth Rate (%)
               </label>
-              <input
-                type="number"
-                step="0.1"
-                value={terminalGrowth}
-                onChange={(e) => setTerminalGrowth(e.target.value)}
-                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+              <div className="flex gap-2">
+                <input
+                  type="number"
+                  step="0.1"
+                  value={terminalGrowth}
+                  onChange={(e) => setTerminalGrowth(e.target.value)}
+                  className="flex-1 px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="e.g., 2.5"
+                />
+                <button
+                  onClick={() => setShowTerminalGrowthCalculator(true)}
+                  className="px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-1 text-sm"
+                  title="Calculate Terminal Value"
+                >
+                  <Calculator size={16} />
+                </button>
+              </div>
             </div>
 
             <div>
@@ -282,6 +377,224 @@ const DCFValuationCalculator: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {showWaccCalculator && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-bold text-gray-900">WACC Calculator</h3>
+                <button
+                  onClick={() => setShowWaccCalculator(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Market Value of Equity ($)
+                  </label>
+                  <input
+                    type="number"
+                    value={waccEquityValue}
+                    onChange={(e) => setWaccEquityValue(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="e.g., 1000000000"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Market Value of Debt ($)
+                  </label>
+                  <input
+                    type="number"
+                    value={waccDebtValue}
+                    onChange={(e) => setWaccDebtValue(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="e.g., 300000000"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Cost of Equity (%)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={waccCostOfEquity}
+                    onChange={(e) => setWaccCostOfEquity(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="e.g., 10"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Cost of Debt (%)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={waccCostOfDebt}
+                    onChange={(e) => setWaccCostOfDebt(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="e.g., 5"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Tax Rate (%)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={waccTaxRate}
+                    onChange={(e) => setWaccTaxRate(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="e.g., 21"
+                  />
+                </div>
+
+                {calculatedWacc !== null && (
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                    <p className="text-sm text-gray-600 mb-1">Calculated WACC</p>
+                    <p className="text-3xl font-bold text-blue-600">
+                      {calculatedWacc.toFixed(2)}%
+                    </p>
+                    <div className="mt-4 text-xs text-gray-600">
+                      <p className="font-medium mb-1">Formula:</p>
+                      <p>WACC = (E/V × Re) + (D/V × Rd × (1 - Tc))</p>
+                      <p className="mt-2">Where:</p>
+                      <ul className="list-disc list-inside space-y-1 ml-2">
+                        <li>E = Market value of equity</li>
+                        <li>D = Market value of debt</li>
+                        <li>V = E + D (Total value)</li>
+                        <li>Re = Cost of equity</li>
+                        <li>Rd = Cost of debt</li>
+                        <li>Tc = Tax rate</li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    onClick={useWaccInDcf}
+                    disabled={calculatedWacc === null}
+                    className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed font-medium"
+                  >
+                    Use in DCF
+                  </button>
+                  <button
+                    onClick={useWaccInTerminalGrowth}
+                    disabled={calculatedWacc === null}
+                    className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed font-medium"
+                  >
+                    Use in Terminal Growth
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showTerminalGrowthCalculator && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-bold text-gray-900">Terminal Value Calculator</h3>
+                <button
+                  onClick={() => setShowTerminalGrowthCalculator(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Final Year Free Cash Flow ($)
+                  </label>
+                  <input
+                    type="number"
+                    value={terminalFcf}
+                    onChange={(e) => setTerminalFcf(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="e.g., 100000000"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    WACC - Discount Rate (%)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={terminalWacc}
+                    onChange={(e) => setTerminalWacc(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="e.g., 8.5"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Terminal Growth Rate (%)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={terminalGrowthRate}
+                    onChange={(e) => setTerminalGrowthRate(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="e.g., 2.5"
+                  />
+                </div>
+
+                {calculatedTerminalValue !== null && (
+                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                    <p className="text-sm text-gray-600 mb-1">Terminal Value</p>
+                    <p className="text-3xl font-bold text-green-600">
+                      ${(calculatedTerminalValue / 1000000).toFixed(0)}M
+                    </p>
+                    <div className="mt-4 text-xs text-gray-600">
+                      <p className="font-medium mb-1">Formula:</p>
+                      <p>TV = FCF × (1 + g) / (WACC - g)</p>
+                      <p className="mt-2">Where:</p>
+                      <ul className="list-disc list-inside space-y-1 ml-2">
+                        <li>TV = Terminal Value</li>
+                        <li>FCF = Final year Free Cash Flow</li>
+                        <li>g = Terminal growth rate</li>
+                        <li>WACC = Weighted Average Cost of Capital</li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    onClick={useTerminalGrowthInDcf}
+                    disabled={!terminalGrowthRate}
+                    className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed font-medium"
+                  >
+                    Use Growth Rate in DCF
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
